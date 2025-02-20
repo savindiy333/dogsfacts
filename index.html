@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Fun Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .fact {
+            margin: 20px;
+            font-size: 1.5em;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            .fact {
+                font-size: 1.2em;
+            }
+            .btn {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Dog Fun Facts</h1>
+    <div id="fact" class="fact">Click the button to see a fun fact!</div>
+    <button onclick="showRandomFact()" class="btn">Show Random Fact</button>
+    <button onclick="shareOnTwitter()" class="btn">Share on Twitter</button>
+
+    <script>
+        const facts = [
+            { "fact": "Dogs have a sense of time and can predict future events, such as regular walk times." },
+            { "fact": "A dog's sense of smell is at least 40 times better than a human's." },
+            { "fact": "Dogs have three eyelids, including one to keep their eyes moist and protected." },
+            { "fact": "The Basenji dog is known as the 'barkless dog' because it makes a unique yodel-like sound." },
+            { "fact": "Dogs can hear sounds at frequencies as high as 65,000 Hz, while humans can only hear up to 20,000 Hz." },
+            { "fact": "The Greyhound is the fastest dog breed, capable of reaching speeds up to 45 mph." },
+            { "fact": "Dogs have sweat glands only in their paw pads." },
+            { "fact": "The Labrador Retriever has been the most popular dog breed in the United States for over 30 years." },
+            { "fact": "A dog's nose print is unique, much like a human's fingerprint." },
+            { "fact": "Dogs can understand up to 250 words and gestures." }
+        ];
+
+        function showRandomFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const randomFact = facts[randomIndex].fact;
+            const factElement = document.getElementById('fact');
+            factElement.style.opacity = 0;
+            setTimeout(() => {
+                factElement.innerText = randomFact;
+                factElement.style.opacity = 1;
+            }, 500);
+        }
+
+        function shareOnTwitter() {
+            const fact = document.getElementById('fact').innerText;
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fact)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
